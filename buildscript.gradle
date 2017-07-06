@@ -47,7 +47,7 @@ mainClassName = "de.ellpeck.rockbottom.Main"
 
 run {
     dependsOn(compileJava)
-    args = ["--unpackedModsDir", "./build/classes/main", "--tempDir", "./build/temp"]
+    args = ["--unpackedModsDir", "./build/classes/main"]
 }
 
 // You should not use these tasks! Distribution of the game jar is not allowed!
@@ -89,7 +89,7 @@ task createIntelliJRuns {
 task createEclipseRuns {
     group = 'ide'
     description = 'Creates the project run configuration for Eclipse'
-    def file = new File("$projectDir", "Launch Default.launch")
+    def file = new File("$projectDir", "Launch RB.launch")
     if (!file.exists()) {
         file.getParentFile().mkdirs()
         file.createNewFile()
@@ -97,28 +97,7 @@ task createEclipseRuns {
     file.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
             "<launchConfiguration type=\"org.eclipse.jdt.launching.localJavaApplication\">\n" +
             "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_PATHS\">\n" +
-            "<listEntry value=\"/Launch Default\"/>\n" +
-            "</listAttribute>\n" +
-            "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_TYPES\">\n" +
-            "<listEntry value=\"4\"/>\n" +
-            "</listAttribute>\n" +
-            "<listAttribute key=\"org.eclipse.debug.ui.favoriteGroups\">\n" +
-            "<listEntry value=\"org.eclipse.debug.ui.launchGroup.debug\"/>\n" +
-            "<listEntry value=\"org.eclipse.debug.ui.launchGroup.run\"/>\n" +
-            "</listAttribute>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Launcher\"/>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main\"/>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
-            "</launchConfiguration>", "UTF-8")
-    file = new File("$projectDir", "Launch Debug.launch")
-    if (!file.exists()) {
-        file.getParentFile().mkdirs()
-        file.createNewFile()
-    }
-    file.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
-            "<launchConfiguration type=\"org.eclipse.jdt.launching.localJavaApplication\">\n" +
-            "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_PATHS\">\n" +
-            "<listEntry value=\"/Launch Debug\"/>\n" +
+            "<listEntry value=\"/Launch RB\"/>\n" +
             "</listAttribute>\n" +
             "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_TYPES\">\n" +
             "<listEntry value=\"4\"/>\n" +
@@ -128,7 +107,7 @@ task createEclipseRuns {
             "<listEntry value=\"org.eclipse.debug.ui.launchGroup.run\"/>\n" +
             "</listAttribute>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Main\"/>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main --tempDir ./build/temp\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main\"/>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
             "</launchConfiguration>", "UTF-8")
 }
