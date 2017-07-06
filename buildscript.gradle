@@ -39,6 +39,7 @@ task processSources(type: Copy) {
 }
 
 compileJava {
+    new File("$projectDir", "build"+File.separator+"classes").deleteDir()
     dependsOn(processSources)
     source = processSources.destinationDir
 }
