@@ -12,6 +12,10 @@ ext {
     apiVersion = '+'
 }
 
+String getAPIVersion() {
+    return project.ext.apiVersion
+}
+
 Hashtable<String, ?> getTokens() {
     if(!project.ext.has("tokens"))
         project.ext.set("tokens", new Hashtable<String, ?>())
@@ -30,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: project.apiVersion
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: getAPIVersion()
     runtime fileTree("./gamedata")
 }
 
