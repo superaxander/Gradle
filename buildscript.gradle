@@ -8,10 +8,9 @@ apply plugin: 'application'
 sourceCompatibility = targetCompatibility = 1.8
 
 ext {
-    replace = this.&replace   
+    replace = this.&replace
+    apiVersion = '+'
 }
-
-project.ext.set("apiVersion", '+')
 
 Hashtable<String, ?> getTokens() {
     if(!project.ext.has("tokens"))
@@ -31,7 +30,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: ext.apiVersion
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: apiVersion
     runtime fileTree("./gamedata")
 }
 
