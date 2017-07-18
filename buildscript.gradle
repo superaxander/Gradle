@@ -28,7 +28,6 @@ repositories {
 }
 
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
     runtime fileTree("./gamedata")
 }
 
