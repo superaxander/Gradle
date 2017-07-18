@@ -11,7 +11,7 @@ ext {
     replace = this.&replace   
 }
 
-project.ext["apiVersion"] = '+'
+project.ext.set("apiVersion", '+')
 
 Hashtable<String, ?> getTokens() {
     if(!project.ext.has("tokens"))
