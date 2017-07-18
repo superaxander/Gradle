@@ -8,9 +8,11 @@ apply plugin: 'application'
 sourceCompatibility = targetCompatibility = 1.8
 
 ext {
-    replace = this.&replace
-    apiVersion = '+'
+    replace = this.&replace   
 }
+
+project.ext["apiVersion"] = '+'
+
 Hashtable<String, ?> getTokens() {
     if(!project.ext.has("tokens"))
         project.ext.set("tokens", new Hashtable<String, ?>())
