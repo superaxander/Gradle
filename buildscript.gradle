@@ -3,7 +3,6 @@ import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'application'
 
 sourceCompatibility = targetCompatibility = 1.8
 
@@ -43,18 +42,17 @@ compileJava {
     source = processSources.destinationDir
 }
 
-mainClassName = "de.ellpeck.rockbottom.Main"
+def mainClassName = "de.ellpeck.rockbottom.Main"
 
-run {
-    dependsOn(compileJava)
+task runClient(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
     args = ["--unpackedModsDir", "./build/classes/main"]
+    main = mainClassName
 }
 
-// You should not use these tasks! Distribution of the game jar is not allowed!
-assembleDist.setEnabled(false)
-distTar.setEnabled(false)
-distZip.setEnabled(false)
-installDist.setEnabled(false)
+task run {
+    dependsOn(runClient)
+}
 
 task createIntelliJRuns {
     group = 'ide'
@@ -76,7 +74,7 @@ task createIntelliJRuns {
             "            </option\n>" +
             "            <option name=\"taskNames\">\n" +
             "               <list>\n" +
-            "            <option value=\"run\" />" +
+            "            <option value=\"runClient\" />" +
             "               </list>\n" +
             "            </option>\n" +
             "            <option name=\"vmOptions\" />\n" +
