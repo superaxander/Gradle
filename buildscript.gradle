@@ -24,6 +24,9 @@ repositories {
     maven {
         url 'https://maven.chaosfield.at'
     }
+    maven {
+        url "http://clojars.org/repo/"
+    }
 }
 
 dependencies {
