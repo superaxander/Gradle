@@ -50,12 +50,18 @@ def mainClassName = "de.ellpeck.rockbottom.Main"
 task runServer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     args = ["--unpackedModsDir", "./build/classes/main", "--server"]
+    if ( project.hasProperty("additionalArgs") ) {
+        args += Eval.me(additionalArgs)
+    }
     main = mainClassName
 }
 
 task runClient(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     args = ["--unpackedModsDir", "./build/classes/main"]
+    if ( project.hasProperty("additionalArgs") ) {
+        args += Eval.me(additionalArgs)
+    }
     main = mainClassName
 }
 
