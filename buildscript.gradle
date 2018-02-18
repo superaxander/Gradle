@@ -49,7 +49,7 @@ def mainClassName = "de.ellpeck.rockbottom.Main"
 
 task runServer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    args = ["--unpackedModsDir", "./build/classes/main", "--server"]
+    args = ["--unpackedModsDir", "./build/classes/java/main", "--server"]
     if ( project.hasProperty("additionalArgs") ) {
         args += Eval.me(additionalArgs)
     }
@@ -58,7 +58,7 @@ task runServer(type: JavaExec) {
 
 task runClient(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    args = ["--unpackedModsDir", "./build/classes/main"]
+    args = ["--unpackedModsDir", "./build/classes/java/main"]
     if ( project.hasProperty("additionalArgs") ) {
         args += Eval.me(additionalArgs)
     }
@@ -145,7 +145,9 @@ task createEclipseRuns {
             "<listEntry value=\"org.eclipse.debug.ui.launchGroup.run\"/>\n" +
             "</listAttribute>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Main\"/>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./
+	    
+	    /classes/main\"/>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
             "</launchConfiguration>", "UTF-8")
 	file = new File("$projectDir", "Launch RB Server.launch")
