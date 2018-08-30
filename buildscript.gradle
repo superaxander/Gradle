@@ -29,10 +29,6 @@ repositories {
     }
 }
 
-dependencies {
-    runtime fileTree("./gamedata")
-}
-
 task processSources(type: Copy) {
     from sourceSets.main.allSource
     into 'build/processedSrc'
@@ -48,7 +44,7 @@ compileJava {
 def mainClassName = "de.ellpeck.rockbottom.Main"
 
 task runServer(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.main.runtimeClasspath + fileTree("./gamedata")
     args = ["--unpackedModsDir", "./build/classes/java/main", "--server"]
     if ( project.hasProperty("additionalArgs") ) {
         args += Eval.me(additionalArgs)
@@ -57,7 +53,7 @@ task runServer(type: JavaExec) {
 }
 
 task runClient(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
+    classpath = sourceSets.main.runtimeClasspath + fileTree("./gamedata")
     args = ["--unpackedModsDir", "./build/classes/java/main"]
     if ( project.hasProperty("additionalArgs") ) {
         args += Eval.me(additionalArgs)
