@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-sourceCompatibility = targetCompatibility = 1.10
+sourceCompatibility = targetCompatibility = 1.8
 
 ext {
     replace = this.&replace
