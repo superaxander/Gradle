@@ -22,7 +22,7 @@ void replace(String token, String replacement) {
 repositories {
     mavenCentral()
     maven {
-        url 'https://maven.chaosfield.at'
+        url 'https://maven.ellpeck.de'
     }
     maven {
         url "http://clojars.org/repo/"
